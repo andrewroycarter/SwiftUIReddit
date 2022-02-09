@@ -33,7 +33,7 @@ struct PostCellDefaultBody: View {
                         Image(systemName: "photo")
                             .resizable()
                     }
-                    .frame(maxWidth: 120, maxHeight: 90.0)
+                    .frame(width: 120, height: 90.0)
                     if let host = articleThumbnailHost {
                         Text(host)
                             .padding(.horizontal, 3.0)
