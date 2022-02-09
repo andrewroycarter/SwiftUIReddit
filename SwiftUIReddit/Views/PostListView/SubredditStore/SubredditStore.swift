@@ -12,9 +12,10 @@ protocol SubredditStoreType: ObservableObject {
     var subreddit: String? { get }
     var postCellViewModels: [PostCellViewModel] { get }
     var isLoadingFirstPage: Bool { get }
+    var errorText: String? { get }
     
     @MainActor
-    func loadPosts() async
+    func refreshPosts() async
     
 }
 
@@ -22,6 +23,7 @@ class SubredditStore: SubredditStoreType {
     
     @Published private (set) var postCellViewModels: [PostCellViewModel] = []
     @Published private (set) var isLoadingFirstPage = false
+    @Published private (set) var errorText: String?
     
     let subreddit: String?
     let api = RedditAPI()
@@ -31,11 +33,18 @@ class SubredditStore: SubredditStoreType {
     }
     
     @MainActor
-    func loadPosts() async {
+    func refreshPosts() async {
+        errorText = nil
+        postCellViewModels = []
         isLoadingFirstPage = true
         let endpoint = Subreddit(path: "/.json")
-        let listing = try! await api.request(endpoint)
-        postCellViewModels = listing.data.children.map { PostCellViewModel(post: $0.data) }
+        do {
+            let listing = try await api.request(endpoint)
+            postCellViewModels = listing.data.children.map { PostCellViewModel(post: $0.data) }
+        } catch {
+            self.errorText = error.localizedDescription
+        }
+        
         isLoadingFirstPage = false
     }
 }
@@ -44,7 +53,8 @@ class PreviewSubredditStore: SubredditStoreType {
     
     @Published private (set) var postCellViewModels: [PostCellViewModel] = []
     @Published private (set) var isLoadingFirstPage = false
-    
+    @Published private (set) var errorText: String?
+
     let subreddit: String?
     let shouldLoadForever: Bool
 
@@ -54,7 +64,9 @@ class PreviewSubredditStore: SubredditStoreType {
     }
     
     @MainActor
-    func loadPosts() async {
+    func refreshPosts() async {
+        errorText = nil
+        postCellViewModels = []
         isLoadingFirstPage = true
         guard !shouldLoadForever else {
             return

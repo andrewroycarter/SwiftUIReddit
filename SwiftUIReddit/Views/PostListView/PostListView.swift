@@ -13,10 +13,14 @@ struct PostListView<T: SubredditStoreType>: View {
     
     var body: some View {
         Group {
-            if subredditStore.isLoadingFirstPage {
-                ProgressView()
-            } else {
-                List {
+            List {
+                if let errorText = subredditStore.errorText {
+                    HStack {
+                        Spacer()
+                        Text(errorText)
+                        Spacer()
+                    }
+                } else {
                     HStack {
                         Image(systemName: "airplane.departure")
                         Text("Best Posts")
@@ -26,13 +30,24 @@ struct PostListView<T: SubredditStoreType>: View {
                     }
                     .listRowBackground(Color.secondary)
                     
-                    ForEach(subredditStore.postCellViewModels, content: PostCell.init(viewModel:))
+                    if subredditStore.isLoadingFirstPage {
+                        HStack {
+                            Spacer()
+                            ProgressView()
+                            Spacer()
+                        }
+                    } else {
+                        ForEach(subredditStore.postCellViewModels, content: PostCell.init(viewModel:))
+                    }
                 }
-                .listStyle(.plain)
             }
+            .listStyle(.plain)
         }
         .task {
-            await subredditStore.loadPosts()
+            await subredditStore.refreshPosts()
+        }
+        .refreshable {
+            await subredditStore.refreshPosts()
         }
     }
 }
