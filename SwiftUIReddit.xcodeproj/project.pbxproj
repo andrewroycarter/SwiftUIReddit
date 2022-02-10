@@ -224,6 +224,7 @@
 			isa = PBXGroup;
 			children = (
 				22E168C727B5A2D100757D61 /* BottomSheetView.swift */,
+				22E168CE27B5AD5900757D61 /* BottomSheetStore.swift */,
 			);
 			path = BottomSheetView;
 			sourceTree = "<group>";
@@ -232,7 +233,6 @@
 			isa = PBXGroup;
 			children = (
 				22E168CB27B5ACA300757D61 /* RootView.swift */,
-				22E168CE27B5AD5900757D61 /* BottomSheetStore.swift */,
 			);
 			path = RootView;
 			sourceTree = "<group>";

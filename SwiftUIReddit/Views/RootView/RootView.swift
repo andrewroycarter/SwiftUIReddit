@@ -13,9 +13,9 @@ struct RootView: View {
     
     var body: some View {
         ZStack {
-            TabBarView().environmentObject(bottomSheetStore)
+            TabBarView()
             BottomSheetView(isPresented: $bottomSheetStore.isBottomSheetPresented, content: bottomSheetStore.bottomSheetContentView)
-        }
+        }.environmentObject(bottomSheetStore)
     }
 }
 

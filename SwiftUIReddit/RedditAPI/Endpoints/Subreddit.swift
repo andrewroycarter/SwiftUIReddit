@@ -6,41 +6,68 @@
 //
 
 import Foundation
+import SwiftUI
 
 struct Subreddit: Endpoint {
     
     typealias Service = (Subreddit) async throws -> Subreddit.DecodeType
     
-    enum Path {
-        case subreddit(String)
+    enum Sort: String, CaseIterable, Identifiable {
         case hot
         case new
+        case rising
+        case controversial
         case top
+        
+        var id: String {
+            return rawValue
+        }
+        
+        var icon: Image {
+            switch self {
+            case .hot:
+                return Image(systemName: "flame")
+                
+            case .new:
+                return Image(systemName: "sun.min")
+
+            case .rising:
+                return Image(systemName: "chart.line.uptrend.xyaxis")
+
+            case .controversial:
+                return Image(systemName: "waveform.badge.exclamationmark")
+
+            case .top:
+                return Image(systemName: "chart.bar.xaxis")
+            }
+        }
+    }
+    
+    enum Path {
         case home
+        case subreddit(String)
     }
     
     typealias DecodeType = Kind<Listing>
     
     var path: String {
+        let path: String
+        
         switch subredditPath {
-        case .hot:
-            return "/hot/.json"
-            
-        case .new:
-            return "/new/.json"
-            
-        case .top:
-            return "/top/.json"
-            
         case .home:
-            return "/.json"
+            path = ""
             
         case .subreddit(let name):
-            return "/r/\(name).json"
+            path = "/r/\(name)"
         }
+        
+        let sortedPath = path + "/" + sortBy.rawValue
+        let jsonPath = sortedPath + "/.json"
+        return jsonPath
     }
     
     let subredditPath: Path
+    let sortBy: Sort
     let queryItems: [URLQueryItem]? = [URLQueryItem(name: "sr_detail", value: "1")]
     
     // MARK: - Static Methods

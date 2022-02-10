@@ -8,16 +8,26 @@
 import SwiftUI
 
 struct SortPostsSheet: View {
+    
+    @Binding var currentSortBy: Subreddit.Sort
+    @EnvironmentObject var bottomSheetStore: BottomSheetStore
+
     var body: some View {
         VStack {
-            ForEach(0..<5) { _ in
-                HStack {
-                    Image(systemName: "photo")
-                    Text("test")
-                    Spacer()
+            ForEach(Subreddit.Sort.allCases) { sort in
+                Button {
+                    currentSortBy = sort
+                    bottomSheetStore.dismiss()
+                } label: {
+                    HStack {
+                        sort.icon
+                        Text(sort.rawValue.capitalized)
+                        Spacer()
+                    }
+                    .foregroundColor(currentSortBy == sort ? .primary : .secondary)
                 }
-                .padding()
             }
+            .padding()
         }
         .background(.white)
         .cornerRadius(8.0)
@@ -26,6 +36,7 @@ struct SortPostsSheet: View {
 
 struct SortPostsSheet_Previews: PreviewProvider {
     static var previews: some View {
-        SortPostsSheet()
+        SortPostsSheet(currentSortBy: .constant(.hot))
+            .previewLayout(.sizeThatFits)
     }
 }

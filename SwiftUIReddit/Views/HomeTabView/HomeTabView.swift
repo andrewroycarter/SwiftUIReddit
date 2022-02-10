@@ -42,22 +42,27 @@ struct HomeTabView: View {
             Spacer()
             HStack {
                 ForEach(tabs) { tab in
-                    VStack {
-                        Text(tab.title)
-                        Rectangle()
-                            .frame(maxWidth: .infinity, minHeight: 2.0, maxHeight: 2.0)
-                            .foregroundColor(tab == selectedTab ? Color.redditDarkBlue : .white)
-
+                    Button {
+                        selectedTab = tab
+                    } label: {
+                        VStack {
+                            Text(tab.title)
+                                .foregroundColor(.primary)
+                            Rectangle()
+                                .frame(maxWidth: .infinity, minHeight: 2.0, maxHeight: 2.0)
+                                .foregroundColor(tab == selectedTab ? Color.redditDarkBlue : .white)
+                            
+                        }
+                        .frame(maxWidth: .infinity)
                     }
-                    .frame(maxWidth: .infinity)
                 }
             }
             TabView(selection: $selectedTab) {
-                PostListView(subredditStore: SubredditStore(subredditPath: .subreddit("news")))
+                PostListView(subredditStore: SubredditStore(subredditPath: .subreddit("news"), subredditSortBy: .hot))
                     .tag(Tab.news)
-                PostListView(subredditStore: SubredditStore(subredditPath: .home))
+                PostListView(subredditStore: SubredditStore(subredditPath: .home, subredditSortBy: .hot))
                     .tag(Tab.home)
-                PostListView(subredditStore: SubredditStore(subredditPath: .hot))
+                PostListView(subredditStore: SubredditStore(subredditPath: .subreddit("popular"), subredditSortBy: .hot))
                     .tag(Tab.popular)
             }
             .tabViewStyle(.page(indexDisplayMode: .never))

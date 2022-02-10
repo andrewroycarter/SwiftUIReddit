@@ -20,4 +20,11 @@ class BottomSheetStore: ObservableObject {
         }
     }
     
+    func dismiss() {
+        withAnimation {
+            bottomSheetContentView = AnyView(EmptyView())
+            isBottomSheetPresented = false
+        }
+    }
+    
 }

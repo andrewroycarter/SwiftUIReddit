@@ -23,15 +23,13 @@ struct PostListView: View {
                     }
                 } else {
                     HStack {
-                        Image(systemName: "airplane.departure")
+                        subredditStore.subredditSortBy.icon
                         Button {
-                            withAnimation {
-                                bottomSheetStore.present {
-                                    SortPostsSheet()
-                                }
+                            bottomSheetStore.present {
+                                SortPostsSheet(currentSortBy: $subredditStore.subredditSortBy)
                             }
                         } label: {
-                            Text("Hot Posts")
+                            Text("\(subredditStore.subredditSortBy.rawValue.capitalized) Posts")
                         }
                         Image(systemName: "chevron.down")
                         Spacer()
@@ -63,7 +61,8 @@ struct PostListView: View {
 
 struct PostListView_Previews: PreviewProvider {
     static var previews: some View {
-        PostListView(subredditStore: SubredditStore(subredditPath: .hot,
+        PostListView(subredditStore: SubredditStore(subredditPath: .subreddit("popular"),
+                                                    subredditSortBy: .hot,
                                                     subredditService: Subreddit.makeMockService(returning: Post.testPosts)))
  
     }
