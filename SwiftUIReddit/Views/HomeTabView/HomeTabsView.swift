@@ -23,7 +23,7 @@ struct HomeTabsView: View {
                             .foregroundColor(.primary)
                         Rectangle()
                             .frame(maxWidth: .infinity, minHeight: 2.0, maxHeight: 2.0)
-                            .foregroundColor(tab == selectedTab ? Color.redditDarkBlue : .white)
+                            .foregroundColor(tab == selectedTab ? Color.redditDarkAccent : .white)
                         
                     }
                     .frame(maxWidth: .infinity)

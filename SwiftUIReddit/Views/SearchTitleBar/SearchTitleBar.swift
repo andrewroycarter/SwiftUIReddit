@@ -15,12 +15,10 @@ struct SearchTitleBar: View {
         HStack {
             Spacer()
             Image(systemName: "person.crop.rectangle.fill")
-                .foregroundColor(.redditLightGray)
+                .foregroundColor(.redditLightBackground)
             Spacer()
             TextField("Search", text: $searchFieldText)
                 .textFieldStyle(.roundedBorder)
-                .background(Color.redditLightGray)
-                .foregroundColor(Color.redditLightGray)
             Spacer()
             Image(systemName: "play.tv")
                 .foregroundColor(.red)

@@ -29,7 +29,7 @@ struct SortPostsSheet: View {
             }
             .padding()
         }
-        .background(.white)
+        .background(.ultraThickMaterial)
         .cornerRadius(8.0)
     }
 }

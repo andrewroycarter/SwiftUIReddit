@@ -35,7 +35,7 @@ struct PostListView: View {
                         Spacer()
                         Image(systemName: "list.bullet.below.rectangle")
                     }
-                    .listRowBackground(Color.redditLightGray)
+                    .listRowBackground(Color.redditLightBackground)
                     
                     if subredditStore.isLoadingFirstPage {
                         HStack {
