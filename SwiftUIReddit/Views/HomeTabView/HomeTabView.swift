@@ -9,7 +9,7 @@ import SwiftUI
 
 struct HomeTabView: View {
     
-    enum Tab: Identifiable {
+    enum Tab: Identifiable, CaseIterable {
         
         case news
         case home
@@ -40,23 +40,7 @@ struct HomeTabView: View {
         VStack {
             SearchTitleBar()
             Spacer()
-            HStack {
-                ForEach(tabs) { tab in
-                    Button {
-                        selectedTab = tab
-                    } label: {
-                        VStack {
-                            Text(tab.title)
-                                .foregroundColor(.primary)
-                            Rectangle()
-                                .frame(maxWidth: .infinity, minHeight: 2.0, maxHeight: 2.0)
-                                .foregroundColor(tab == selectedTab ? Color.redditDarkBlue : .white)
-                            
-                        }
-                        .frame(maxWidth: .infinity)
-                    }
-                }
-            }
+            HomeTabsView(tabs: tabs, selectedTab: $selectedTab)
             TabView(selection: $selectedTab) {
                 PostListView(subredditStore: SubredditStore(subredditPath: .subreddit("news"), subredditSortBy: .hot))
                     .tag(Tab.news)

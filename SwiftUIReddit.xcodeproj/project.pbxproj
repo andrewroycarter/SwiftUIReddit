@@ -33,6 +33,7 @@
 		22E168CC27B5ACA300757D61 /* RootView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22E168CB27B5ACA300757D61 /* RootView.swift */; };
 		22E168CF27B5AD5900757D61 /* BottomSheetStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22E168CE27B5AD5900757D61 /* BottomSheetStore.swift */; };
 		22E168D227B5BA1100757D61 /* SortPostsSheet.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22E168D127B5BA1100757D61 /* SortPostsSheet.swift */; };
+		22E168D427B5CC8600757D61 /* HomeTabsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22E168D327B5CC8600757D61 /* HomeTabsView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -63,6 +64,7 @@
 		22E168CB27B5ACA300757D61 /* RootView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RootView.swift; sourceTree = "<group>"; };
 		22E168CE27B5AD5900757D61 /* BottomSheetStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BottomSheetStore.swift; sourceTree = "<group>"; };
 		22E168D127B5BA1100757D61 /* SortPostsSheet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SortPostsSheet.swift; sourceTree = "<group>"; };
+		22E168D327B5CC8600757D61 /* HomeTabsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeTabsView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -80,6 +82,7 @@
 			isa = PBXGroup;
 			children = (
 				2202847C27B5785800BC7AF2 /* HomeTabView.swift */,
+				22E168D327B5CC8600757D61 /* HomeTabsView.swift */,
 			);
 			path = HomeTabView;
 			sourceTree = "<group>";
@@ -336,6 +339,7 @@
 				2259B45927B43E7E004714BE /* Post.swift in Sources */,
 				2259B46727B455CD004714BE /* PostHint.swift in Sources */,
 				2259B47727B46A8C004714BE /* PostCellDefaultBody.swift in Sources */,
+				22E168D427B5CC8600757D61 /* HomeTabsView.swift in Sources */,
 				2259B46E27B4605E004714BE /* PostCellViewModel.swift in Sources */,
 				2259B45727B43E56004714BE /* Kind.swift in Sources */,
 				2202848027B584BD00BC7AF2 /* Color+Reddit.swift in Sources */,
