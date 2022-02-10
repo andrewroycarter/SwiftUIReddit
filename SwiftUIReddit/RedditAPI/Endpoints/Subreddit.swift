@@ -36,7 +36,7 @@ struct Subreddit: Endpoint {
             return "/.json"
             
         case .subreddit(let name):
-            return "/\(name).json"
+            return "/r/\(name).json"
         }
     }
     

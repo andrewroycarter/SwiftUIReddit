@@ -10,7 +10,8 @@ import SwiftUI
 struct PostListView: View {
     
     @StateObject var subredditStore: SubredditStore
-    
+    @EnvironmentObject var bottomSheetStore: BottomSheetStore
+
     var body: some View {
         Group {
             List {
@@ -23,7 +24,15 @@ struct PostListView: View {
                 } else {
                     HStack {
                         Image(systemName: "airplane.departure")
-                        Text("Best Posts")
+                        Button {
+                            withAnimation {
+                                bottomSheetStore.present {
+                                    SortPostsSheet()
+                                }
+                            }
+                        } label: {
+                            Text("Hot Posts")
+                        }
                         Image(systemName: "chevron.down")
                         Spacer()
                         Image(systemName: "list.bullet.below.rectangle")

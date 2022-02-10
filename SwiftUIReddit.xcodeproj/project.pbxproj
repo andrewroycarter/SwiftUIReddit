@@ -29,6 +29,10 @@
 		2259B47727B46A8C004714BE /* PostCellDefaultBody.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2259B47627B46A8C004714BE /* PostCellDefaultBody.swift */; };
 		2259B47927B46B51004714BE /* PostCellActionsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2259B47827B46B51004714BE /* PostCellActionsView.swift */; };
 		2259B47C27B4BEB3004714BE /* TabBarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2259B47B27B4BEB3004714BE /* TabBarView.swift */; };
+		22E168C827B5A2D100757D61 /* BottomSheetView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22E168C727B5A2D100757D61 /* BottomSheetView.swift */; };
+		22E168CC27B5ACA300757D61 /* RootView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22E168CB27B5ACA300757D61 /* RootView.swift */; };
+		22E168CF27B5AD5900757D61 /* BottomSheetStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22E168CE27B5AD5900757D61 /* BottomSheetStore.swift */; };
+		22E168D227B5BA1100757D61 /* SortPostsSheet.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22E168D127B5BA1100757D61 /* SortPostsSheet.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -55,6 +59,10 @@
 		2259B47627B46A8C004714BE /* PostCellDefaultBody.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostCellDefaultBody.swift; sourceTree = "<group>"; };
 		2259B47827B46B51004714BE /* PostCellActionsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostCellActionsView.swift; sourceTree = "<group>"; };
 		2259B47B27B4BEB3004714BE /* TabBarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarView.swift; sourceTree = "<group>"; };
+		22E168C727B5A2D100757D61 /* BottomSheetView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BottomSheetView.swift; sourceTree = "<group>"; };
+		22E168CB27B5ACA300757D61 /* RootView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RootView.swift; sourceTree = "<group>"; };
+		22E168CE27B5AD5900757D61 /* BottomSheetStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BottomSheetStore.swift; sourceTree = "<group>"; };
+		22E168D127B5BA1100757D61 /* SortPostsSheet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SortPostsSheet.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -142,6 +150,9 @@
 		2259B45B27B43EA1004714BE /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				22E168D027B5B9FD00757D61 /* SortPostsSheet */,
+				22E168CD27B5AD4100757D61 /* RootView */,
+				22E168C627B5A1EA00757D61 /* BottomSheetView */,
 				222E01E527B5890900D00529 /* SearchTitleBar */,
 				2202847B27B5783600BC7AF2 /* HomeTabView */,
 				2259B47A27B4BE98004714BE /* TabBarView */,
@@ -207,6 +218,31 @@
 				2259B47B27B4BEB3004714BE /* TabBarView.swift */,
 			);
 			path = TabBarView;
+			sourceTree = "<group>";
+		};
+		22E168C627B5A1EA00757D61 /* BottomSheetView */ = {
+			isa = PBXGroup;
+			children = (
+				22E168C727B5A2D100757D61 /* BottomSheetView.swift */,
+			);
+			path = BottomSheetView;
+			sourceTree = "<group>";
+		};
+		22E168CD27B5AD4100757D61 /* RootView */ = {
+			isa = PBXGroup;
+			children = (
+				22E168CB27B5ACA300757D61 /* RootView.swift */,
+				22E168CE27B5AD5900757D61 /* BottomSheetStore.swift */,
+			);
+			path = RootView;
+			sourceTree = "<group>";
+		};
+		22E168D027B5B9FD00757D61 /* SortPostsSheet */ = {
+			isa = PBXGroup;
+			children = (
+				22E168D127B5BA1100757D61 /* SortPostsSheet.swift */,
+			);
+			path = SortPostsSheet;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -279,6 +315,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				22E168CF27B5AD5900757D61 /* BottomSheetStore.swift in Sources */,
+				22E168D227B5BA1100757D61 /* SortPostsSheet.swift in Sources */,
 				2259B47C27B4BEB3004714BE /* TabBarView.swift in Sources */,
 				2259B45F27B43ED4004714BE /* Subreddit.swift in Sources */,
 				2259B46127B43F1D004714BE /* Listing.swift in Sources */,
@@ -289,7 +327,9 @@
 				2259B45327B421B4004714BE /* PostListView.swift in Sources */,
 				2259B45527B424F5004714BE /* RedditAPI.swift in Sources */,
 				2259B47527B46957004714BE /* PostCellSubredditAuthorView.swift in Sources */,
+				22E168CC27B5ACA300757D61 /* RootView.swift in Sources */,
 				2259B46C27B46024004714BE /* PostListViewModel.swift in Sources */,
+				22E168C827B5A2D100757D61 /* BottomSheetView.swift in Sources */,
 				2259B46527B44D93004714BE /* SubredditDetail.swift in Sources */,
 				222E01E727B5892A00D00529 /* SearchTitleBar.swift in Sources */,
 				2230837527B41BDC00D37C45 /* PostCell.swift in Sources */,

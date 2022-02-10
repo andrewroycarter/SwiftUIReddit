@@ -8,6 +8,6 @@
 import Foundation
 
 struct Kind<T: Codable>: Codable {
-    let kind: String
+    let kind: String?
     let data: T
 }

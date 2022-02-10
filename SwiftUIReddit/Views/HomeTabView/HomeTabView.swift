@@ -34,7 +34,7 @@ struct HomeTabView: View {
     }
     
     let tabs: [Tab] = [.news, .home, .popular]
-    @State var selectedTab = Tab.home
+    @State var selectedTab = Tab.popular
     
     var body: some View {
         VStack {

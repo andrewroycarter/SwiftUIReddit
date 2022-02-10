@@ -11,7 +11,7 @@ import SwiftUI
 struct SwiftUIRedditApp: App {
     var body: some Scene {
         WindowGroup {
-            TabBarView()
+            RootView()
         }
     }
 }
