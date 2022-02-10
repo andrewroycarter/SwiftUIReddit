@@ -7,9 +7,9 @@
 
 import SwiftUI
 
-struct PostListView<T: SubredditStoreType>: View {
+struct PostListView: View {
     
-    @StateObject var subredditStore: T
+    @StateObject var subredditStore: SubredditStore
     
     var body: some View {
         Group {
@@ -28,7 +28,7 @@ struct PostListView<T: SubredditStoreType>: View {
                         Spacer()
                         Image(systemName: "list.bullet.below.rectangle")
                     }
-                    .listRowBackground(Color.secondary)
+                    .listRowBackground(Color.redditLightGray)
                     
                     if subredditStore.isLoadingFirstPage {
                         HStack {
@@ -54,7 +54,8 @@ struct PostListView<T: SubredditStoreType>: View {
 
 struct PostListView_Previews: PreviewProvider {
     static var previews: some View {
-        PostListView(subredditStore: PreviewSubredditStore(subreddit: nil, shouldLoadForever: false))
-        PostListView(subredditStore: PreviewSubredditStore(subreddit: nil, shouldLoadForever: true))
+        PostListView(subredditStore: SubredditStore(subredditPath: .hot,
+                                                    subredditService: Subreddit.makeMockService(returning: Post.testPosts)))
+ 
     }
 }

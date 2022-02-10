@@ -42,6 +42,7 @@ class RedditAPI {
     // MARK: - Properties
     
     private let session = URLSession(configuration: .default)
+    static let shared = RedditAPI()
     
     // MARK: - Instance Methods
     

@@ -62,7 +62,7 @@ struct Post: Codable {
                                 subreddit: "Cats",
                                 subredditNamePrefixed: "r/Cats",
                                 urlOverriddenByDest: "http://www.test.com",
-                                postHint: .image,
+                                postHint: .link,
                                 thumbnail: "https://b.thumbs.redditmedia.com/zgQOWbv7dgUS8SmGUjozhWr_ZJXbeycX1EjspB_x1GE.jpg",
                                 srDetail: SubredditDetail.testSubredditDetail)
 }

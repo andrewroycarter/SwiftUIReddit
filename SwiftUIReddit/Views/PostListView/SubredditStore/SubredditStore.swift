@@ -7,29 +7,18 @@
 
 import Foundation
 
-protocol SubredditStoreType: ObservableObject {
-    
-    var subreddit: String? { get }
-    var postCellViewModels: [PostCellViewModel] { get }
-    var isLoadingFirstPage: Bool { get }
-    var errorText: String? { get }
-    
-    @MainActor
-    func refreshPosts() async
-    
-}
-
-class SubredditStore: SubredditStoreType {
+class SubredditStore: ObservableObject {
     
     @Published private (set) var postCellViewModels: [PostCellViewModel] = []
     @Published private (set) var isLoadingFirstPage = false
     @Published private (set) var errorText: String?
     
-    let subreddit: String?
-    let api = RedditAPI()
+    let subredditPath: Subreddit.Path
+    let subredditService: Subreddit.Service
     
-    init(subreddit: String?) {
-        self.subreddit = subreddit
+    init(subredditPath: Subreddit.Path, subredditService: @escaping Subreddit.Service = RedditAPI.shared.request ) {
+        self.subredditPath = subredditPath
+        self.subredditService = subredditService
     }
     
     @MainActor
@@ -37,9 +26,9 @@ class SubredditStore: SubredditStoreType {
         errorText = nil
         postCellViewModels = []
         isLoadingFirstPage = true
-        let endpoint = Subreddit(path: "/.json")
+        let endpoint = Subreddit(subredditPath: subredditPath)
         do {
-            let listing = try await api.request(endpoint)
+            let listing = try await subredditService(endpoint)
             postCellViewModels = listing.data.children.map { PostCellViewModel(post: $0.data) }
         } catch {
             self.errorText = error.localizedDescription
@@ -48,32 +37,3 @@ class SubredditStore: SubredditStoreType {
         isLoadingFirstPage = false
     }
 }
-
-class PreviewSubredditStore: SubredditStoreType {
-    
-    @Published private (set) var postCellViewModels: [PostCellViewModel] = []
-    @Published private (set) var isLoadingFirstPage = false
-    @Published private (set) var errorText: String?
-
-    let subreddit: String?
-    let shouldLoadForever: Bool
-
-    init(subreddit: String?, shouldLoadForever: Bool) {
-        self.subreddit = subreddit
-        self.shouldLoadForever = shouldLoadForever
-    }
-    
-    @MainActor
-    func refreshPosts() async {
-        errorText = nil
-        postCellViewModels = []
-        isLoadingFirstPage = true
-        guard !shouldLoadForever else {
-            return
-        }
-        postCellViewModels = Post.testPosts.map(PostCellViewModel.init(post:))
-        isLoadingFirstPage = false
-    }
-}
-
-
