@@ -10,6 +10,8 @@ import SwiftUI
 struct SideMenuView: View {
     
     @EnvironmentObject var sideMenuStore: SideMenuStore
+    @EnvironmentObject var authenticationStore: RedditAuthenticationStore
+    @StateObject var authenticationSession = RedditAuthenticationStore()
     
     var body: some View {
         VStack {
@@ -38,13 +40,19 @@ struct SideMenuView: View {
             Spacer()
                 .frame(height: 8.0)
             Group {
-                HStack {
-                    Image(systemName: "person.circle")
-                    Text("Sign up / Log in")
-                        .bold()
-                    Spacer()
-                }
+                Button {
+                    Task {
+                        try await authenticationStore.signIn()
+                    }
+                } label: {
+                    HStack {
+                        Image(systemName: "person.circle")
+                        Text("Sign up / Log in")
+                            .bold()
+                        Spacer()
+                    }
                     .padding([.top, .bottom])
+                }
                 Spacer()
                     .frame(height: 8.0)
                 HStack {

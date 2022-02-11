@@ -40,8 +40,8 @@ struct HomeTabView: View {
         VStack {
             SearchTitleBar()
             Spacer()
-            HomeTabsView(tabs: tabs, selectedTab: $selectedTab)
-            TabView(selection: $selectedTab) {
+            HomeTabsView(tabs: tabs, selectedTab: $selectedTab.animation())
+            TabView(selection: $selectedTab.animation()) {
                 PostListView(subredditStore: SubredditStore(subredditPath: .subreddit("news"), subredditSortBy: .hot))
                     .tag(Tab.news)
                 PostListView(subredditStore: SubredditStore(subredditPath: .home, subredditSortBy: .hot))

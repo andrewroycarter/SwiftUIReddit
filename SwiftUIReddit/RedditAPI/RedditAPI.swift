@@ -7,27 +7,68 @@
 
 import Foundation
 
+enum Method: String {
+    case get = "GET"
+    case post = "POST"
+}
+
 protocol Endpoint {
     associatedtype DecodeType: Decodable
 
     var path: String { get }
     var queryItems: [URLQueryItem]? { get }
+    var method: Method { get }
+    var body: Data? { get }
+    var contentTypeHeader: String? { get }
+    var authorizationHeader: String? { get }
     
 }
 
 extension Endpoint {
     
+    var queryItems: [URLQueryItem]? {
+        return nil
+    }
+    
+    var method: Method {
+        return .get
+    }
+    
+    var body: Data? {
+        return nil
+    }
+    
+    var contentTypeHeader: String? {
+        return nil
+    }
+    
+    var authorizationHeader: String? {
+        return nil
+    }
+    
     func makeURLRequest() -> URLRequest? {
         var components = URLComponents()
         components.scheme = "https"
-        components.host = "api.reddit.com"
+        components.host = "www.reddit.com"
         components.queryItems = queryItems
         components.path = path
         
         let url = components.url
-        let request = url.map { url in
-            return URLRequest(url: url)
+        guard var request = url.map({ URLRequest(url: $0) }) else {
+            return nil
         }
+        
+        request.httpBody = body
+        request.httpMethod = method.rawValue
+        
+        if let contentTypeHeader = contentTypeHeader {
+            request.addValue(contentTypeHeader, forHTTPHeaderField: "Content-Type")
+        }
+        
+        if let authorizationHeader = authorizationHeader {
+            request.addValue(authorizationHeader, forHTTPHeaderField: "Authorization")
+        }
+        
         return request
     }
     

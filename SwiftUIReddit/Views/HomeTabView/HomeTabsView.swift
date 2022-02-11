@@ -21,9 +21,16 @@ struct HomeTabsView: View {
                     VStack {
                         Text(tab.title)
                             .foregroundColor(.primary)
+                        if tab == selectedTab {
                         Rectangle()
                             .frame(maxWidth: .infinity, minHeight: 2.0, maxHeight: 2.0)
-                            .foregroundColor(tab == selectedTab ? Color.redditDarkAccent : .white)
+                            .foregroundColor(Color.redditDarkAccent)
+                            .transition(.opacity)
+                        } else {
+                            Rectangle()
+                                .frame(maxWidth: .infinity, minHeight: 2.0, maxHeight: 2.0)
+                                .foregroundColor(.clear)
+                        }
                         
                     }
                     .frame(maxWidth: .infinity)

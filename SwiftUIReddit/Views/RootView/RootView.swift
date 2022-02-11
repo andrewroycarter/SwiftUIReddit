@@ -11,6 +11,7 @@ struct RootView: View {
     
     @StateObject var bottomSheetStore = BottomSheetStore()
     @StateObject var sideMenuStore = SideMenuStore()
+    @StateObject var authenticationStore = RedditAuthenticationStore()
     
     var body: some View {
         let dismissSideMenuTapGesture = TapGesture().onEnded {
@@ -35,6 +36,7 @@ struct RootView: View {
         }
         .environmentObject(bottomSheetStore)
         .environmentObject(sideMenuStore)
+        .environmentObject(authenticationStore)
     }
 }
 
