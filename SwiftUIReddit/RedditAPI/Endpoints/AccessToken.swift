@@ -24,12 +24,12 @@ struct AccessToken: Endpoint {
         return "application/x-www-form-urlencoded"
     }
     
-    var authorizationHeader: String? {
+    var authorization: Authorization? {
         guard let encodedPassword = "\(clientId):".data(using: .utf8)?.base64EncodedString() else {
             fatalError("Failed to encode password")
         }
         
-        return "Basic \(encodedPassword)"
+        return .value("Basic \(encodedPassword)")
     }
     
 }

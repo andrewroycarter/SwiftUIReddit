@@ -10,6 +10,11 @@ import AuthenticationServices
 
 class RedditAuthenticationStore: NSObject, ObservableObject, ASWebAuthenticationPresentationContextProviding {
     
+    enum State {
+        case signedOut
+        case signedIn(token: String)
+    }
+    
     enum Error: Swift.Error {
         case invalidAuthURL
         case missingTokenRetrievalCode
@@ -17,8 +22,10 @@ class RedditAuthenticationStore: NSObject, ObservableObject, ASWebAuthentication
     
     // MARK: - Properties
     
+    static let shared = RedditAuthenticationStore()
     let api = RedditAPI.shared
     private let clientId = "1K7mNP-6aCN4oTZFkwl6Cg"
+    @Published var state = State.signedOut
     
     // MARK: - Instance Methods
     
@@ -33,7 +40,7 @@ class RedditAuthenticationStore: NSObject, ObservableObject, ASWebAuthentication
             .init(name: "state", value: UUID().uuidString),
             .init(name: "redirect_uri", value: "swiftuireddit://auth"),
             .init(name: "duration", value: "temporary"),
-            .init(name: "scope", value: "identity,vote")
+            .init(name: "scope", value: "identity,vote,read,mysubreddits")
         ]
         
         guard let url = components.url else {
@@ -43,14 +50,14 @@ class RedditAuthenticationStore: NSObject, ObservableObject, ASWebAuthentication
         return url
     }
     
+    @MainActor
     func signIn() async throws {
         let url = try makeAuthURL()
         let code = try await getTokenRetrievalCode(from: url)
         let endpoint = AccessToken(code: code, clientId: clientId)
         let container = try await api.request(endpoint)
-        print(container)
+        state = .signedIn(token: container.accessToken)
     }
-    
     
     func getTokenRetrievalCode(from url: URL) async throws -> String {
         return try await withCheckedThrowingContinuation { continuation in

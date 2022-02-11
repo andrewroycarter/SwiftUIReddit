@@ -6,10 +6,16 @@
 //
 
 import Foundation
+import SwiftUI
 
 enum Method: String {
     case get = "GET"
     case post = "POST"
+}
+
+enum Authorization {
+    case value(String)
+    case accessTokenIfSignedIn
 }
 
 protocol Endpoint {
@@ -20,8 +26,7 @@ protocol Endpoint {
     var method: Method { get }
     var body: Data? { get }
     var contentTypeHeader: String? { get }
-    var authorizationHeader: String? { get }
-    
+    var authorization: Authorization? { get }
 }
 
 extension Endpoint {
@@ -41,17 +46,32 @@ extension Endpoint {
     var contentTypeHeader: String? {
         return nil
     }
-    
-    var authorizationHeader: String? {
-        return nil
+
+    var authorization: Authorization? {
+        return .accessTokenIfSignedIn
     }
     
     func makeURLRequest() -> URLRequest? {
         var components = URLComponents()
         components.scheme = "https"
-        components.host = "www.reddit.com"
         components.queryItems = queryItems
         components.path = path
+        
+        let authorizationValue: String?
+        switch (authorization, RedditAuthenticationStore.shared.state) {
+        case (.accessTokenIfSignedIn, .signedIn(let token)):
+            authorizationValue = "bearer \(token)"
+            components.host = "oauth.reddit.com"
+
+        case (.value(let value), _):
+            authorizationValue = value
+            components.host = "www.reddit.com"
+
+        case (.accessTokenIfSignedIn, .signedOut),
+            (nil, _):
+            authorizationValue = nil
+            components.host = "www.reddit.com"
+        }
         
         let url = components.url
         guard var request = url.map({ URLRequest(url: $0) }) else {
@@ -61,14 +81,14 @@ extension Endpoint {
         request.httpBody = body
         request.httpMethod = method.rawValue
         
+        if let authorizationValue = authorizationValue {
+            request.addValue(authorizationValue, forHTTPHeaderField: "Authorization")
+        }
+        
         if let contentTypeHeader = contentTypeHeader {
             request.addValue(contentTypeHeader, forHTTPHeaderField: "Content-Type")
         }
-        
-        if let authorizationHeader = authorizationHeader {
-            request.addValue(authorizationHeader, forHTTPHeaderField: "Authorization")
-        }
-        
+    
         return request
     }
     

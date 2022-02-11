@@ -11,7 +11,7 @@ struct RootView: View {
     
     @StateObject var bottomSheetStore = BottomSheetStore()
     @StateObject var sideMenuStore = SideMenuStore()
-    @StateObject var authenticationStore = RedditAuthenticationStore()
+    @ObservedObject var authenticationStore = RedditAuthenticationStore.shared
     
     var body: some View {
         let dismissSideMenuTapGesture = TapGesture().onEnded {

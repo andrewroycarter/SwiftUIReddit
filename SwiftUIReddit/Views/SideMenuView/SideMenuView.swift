@@ -53,6 +53,7 @@ struct SideMenuView: View {
                     }
                     .padding([.top, .bottom])
                 }
+                .foregroundColor(.primary)
                 Spacer()
                     .frame(height: 8.0)
                 HStack {

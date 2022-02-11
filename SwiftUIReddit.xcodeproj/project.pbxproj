@@ -142,7 +142,6 @@
 			isa = PBXGroup;
 			children = (
 				22E168EB27B704F000757D61 /* Info.plist */,
-				22E168DB27B6C38C00757D61 /* Utility */,
 				2202847E27B584A800BC7AF2 /* Theme */,
 				2259B45A27B43E9C004714BE /* RedditAPI */,
 				2259B45B27B43EA1004714BE /* Views */,
@@ -276,13 +275,6 @@
 				22E168D127B5BA1100757D61 /* SortPostsSheet.swift */,
 			);
 			path = SortPostsSheet;
-			sourceTree = "<group>";
-		};
-		22E168DB27B6C38C00757D61 /* Utility */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = Utility;
 			sourceTree = "<group>";
 		};
 		22E168E227B6D7E600757D61 /* SideMenuStore */ = {
