@@ -40,9 +40,11 @@ struct PostCell: View {
 
 struct PostCell_Previews: PreviewProvider {
     static var previews: some View {
-        PostCell(viewModel: PostCellViewModel(post: Post.testPost))
+        PostCell(viewModel: PostCellViewModel(post: Post.testPlainPost))
             .previewLayout(.sizeThatFits)
-        PostCell(viewModel: PostCellViewModel(post: Post.testPost))
+        PostCell(viewModel: PostCellViewModel(post: Post.testLinkPost))
+            .previewLayout(.sizeThatFits)
+        PostCell(viewModel: PostCellViewModel(post: Post.testImagePost))
             .preferredColorScheme(.dark)
             .previewLayout(.sizeThatFits)
     }

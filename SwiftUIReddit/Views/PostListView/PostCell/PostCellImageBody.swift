@@ -37,5 +37,6 @@ struct PostCellImageBody: View {
 struct PostCellImageBody_Previews: PreviewProvider {
     static var previews: some View {
         PostCellImageBody(title: "Title", url: nil)
+            .previewLayout(.sizeThatFits)
     }
 }

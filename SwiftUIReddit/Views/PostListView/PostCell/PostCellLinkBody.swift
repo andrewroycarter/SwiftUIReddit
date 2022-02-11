@@ -52,9 +52,9 @@ struct PostCellLinkBody: View {
 
 struct PostCellLinkBody_Previews: PreviewProvider {
     static var previews: some View {
-        PostCellLinkBody(title: Post.testPost.title,
-                            articleThumbnailURL: Post.testPost.thumbnailURL,
-                            articleThumbnailHost: Post.testPost.hostOfUrlOverriddenByDest)
+        PostCellLinkBody(title: Post.testLinkPost.title,
+                            articleThumbnailURL: Post.testLinkPost.thumbnailURL,
+                            articleThumbnailHost: Post.testLinkPost.hostOfUrlOverriddenByDest)
             .previewLayout(.sizeThatFits)
     }
 }

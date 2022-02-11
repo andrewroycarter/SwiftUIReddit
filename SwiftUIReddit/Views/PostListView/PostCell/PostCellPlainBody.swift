@@ -25,7 +25,7 @@ struct PostCellPlainBody: View {
 
 struct PostCellDefaultBody_Previews: PreviewProvider {
     static var previews: some View {
-        PostCellPlainBody(title: Post.testPost.title)
+        PostCellPlainBody(title: Post.testPlainPost.title)
             .previewLayout(.sizeThatFits)
     }
 }
