@@ -10,8 +10,6 @@ import SwiftUI
 struct SideMenuView: View {
     
     @EnvironmentObject var sideMenuStore: SideMenuStore
-    @EnvironmentObject var authenticationStore: RedditAuthenticationStore
-    @StateObject var authenticationSession = RedditAuthenticationStore()
     
     var body: some View {
         VStack {
@@ -26,52 +24,14 @@ struct SideMenuView: View {
                 }
                 Spacer()
             }
-            Image(systemName: "person.circle")
-                .resizable()
-                .frame(width: 75.0, height: 75.0)
-                .aspectRatio(contentMode: .fit)
-                .foregroundColor(.secondary)
-            Text("Sign up to upvote the best content, customize your feed, share your intrests, and more!")
-                .font(.body)
-                .multilineTextAlignment(.center)
-            Spacer()
-                .frame(height: 8.0)
+            SideMenuHeaderView()
             Divider()
             Spacer()
                 .frame(height: 8.0)
-            Group {
-                Button {
-                    Task {
-                        try await authenticationStore.signIn()
-                    }
-                } label: {
-                    HStack {
-                        Image(systemName: "person.circle")
-                        Text("Sign up / Log in")
-                            .bold()
-                        Spacer()
-                    }
-                    .padding([.top, .bottom])
-                }
-                .foregroundColor(.primary)
-                Spacer()
-                    .frame(height: 8.0)
-                HStack {
-                    Image(systemName: "person.circle")
-                    Text("Anonymouse Browsing")
-                        .bold()
-                    Spacer()
-                }
-                .padding([.top, .bottom])
-            }
+            SideMenuAuthView()
             Spacer()
             Divider()
-            HStack {
-                Image(systemName: "gearshape")
-                Text("Settings")
-                Spacer()
-                Image(systemName: "moon")
-            }
+            SideMenuFooterView()
         }.padding()
     }
 }
