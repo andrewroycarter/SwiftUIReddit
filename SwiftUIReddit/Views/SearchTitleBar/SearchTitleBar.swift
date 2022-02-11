@@ -10,12 +10,20 @@ import SwiftUI
 struct SearchTitleBar: View {
     
     @State var searchFieldText = ""
+    @EnvironmentObject var sideMenuStore: SideMenuStore
     
     var body: some View {
         HStack {
             Spacer()
-            Image(systemName: "person.crop.rectangle.fill")
+            Button {
+                withAnimation {
+                    sideMenuStore.isShowingMenu.toggle()
+                }
+            } label: {
+                Image(systemName: "person.crop.rectangle.fill")
                 .foregroundColor(.redditLightBackground)
+            }
+
             Spacer()
             TextField("Search", text: $searchFieldText)
                 .textFieldStyle(.roundedBorder)

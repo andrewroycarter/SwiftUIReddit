@@ -38,6 +38,7 @@
 		22E168DA27B6C1F400757D61 /* String+RedditAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22E168D927B6C1F400757D61 /* String+RedditAPI.swift */; };
 		22E168DF27B6C69100757D61 /* PostCellPlainBody.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22E168DE27B6C69100757D61 /* PostCellPlainBody.swift */; };
 		22E168E127B6C83300757D61 /* PostCellImageBody.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22E168E027B6C83300757D61 /* PostCellImageBody.swift */; };
+		22E168E427B6D7FA00757D61 /* SideMenuStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22E168E327B6D7FA00757D61 /* SideMenuStore.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -73,6 +74,7 @@
 		22E168D927B6C1F400757D61 /* String+RedditAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+RedditAPI.swift"; sourceTree = "<group>"; };
 		22E168DE27B6C69100757D61 /* PostCellPlainBody.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostCellPlainBody.swift; sourceTree = "<group>"; };
 		22E168E027B6C83300757D61 /* PostCellImageBody.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostCellImageBody.swift; sourceTree = "<group>"; };
+		22E168E327B6D7FA00757D61 /* SideMenuStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SideMenuStore.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -163,6 +165,7 @@
 		2259B45B27B43EA1004714BE /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				22E168E227B6D7E600757D61 /* SideMenuStore */,
 				22E168D027B5B9FD00757D61 /* SortPostsSheet */,
 				22E168CD27B5AD4100757D61 /* RootView */,
 				22E168C627B5A1EA00757D61 /* BottomSheetView */,
@@ -268,6 +271,14 @@
 			path = Utility;
 			sourceTree = "<group>";
 		};
+		22E168E227B6D7E600757D61 /* SideMenuStore */ = {
+			isa = PBXGroup;
+			children = (
+				22E168E327B6D7FA00757D61 /* SideMenuStore.swift */,
+			);
+			path = SideMenuStore;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -349,6 +360,7 @@
 				2202847D27B5785800BC7AF2 /* HomeTabView.swift in Sources */,
 				2230836727B41BB700D37C45 /* SwiftUIRedditApp.swift in Sources */,
 				2259B45327B421B4004714BE /* PostListView.swift in Sources */,
+				22E168E427B6D7FA00757D61 /* SideMenuStore.swift in Sources */,
 				2259B45527B424F5004714BE /* RedditAPI.swift in Sources */,
 				2259B47527B46957004714BE /* PostCellSubredditAuthorView.swift in Sources */,
 				22E168DF27B6C69100757D61 /* PostCellPlainBody.swift in Sources */,
