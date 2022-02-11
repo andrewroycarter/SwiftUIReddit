@@ -39,6 +39,7 @@
 		22E168DF27B6C69100757D61 /* PostCellPlainBody.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22E168DE27B6C69100757D61 /* PostCellPlainBody.swift */; };
 		22E168E127B6C83300757D61 /* PostCellImageBody.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22E168E027B6C83300757D61 /* PostCellImageBody.swift */; };
 		22E168E427B6D7FA00757D61 /* SideMenuStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22E168E327B6D7FA00757D61 /* SideMenuStore.swift */; };
+		22E168E727B6DD2B00757D61 /* SideMenuView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22E168E627B6DD2B00757D61 /* SideMenuView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -75,6 +76,7 @@
 		22E168DE27B6C69100757D61 /* PostCellPlainBody.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostCellPlainBody.swift; sourceTree = "<group>"; };
 		22E168E027B6C83300757D61 /* PostCellImageBody.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostCellImageBody.swift; sourceTree = "<group>"; };
 		22E168E327B6D7FA00757D61 /* SideMenuStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SideMenuStore.swift; sourceTree = "<group>"; };
+		22E168E627B6DD2B00757D61 /* SideMenuView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SideMenuView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -165,9 +167,10 @@
 		2259B45B27B43EA1004714BE /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				22E168CD27B5AD4100757D61 /* RootView */,
+				22E168E527B6DD1700757D61 /* SideMenuView */,
 				22E168E227B6D7E600757D61 /* SideMenuStore */,
 				22E168D027B5B9FD00757D61 /* SortPostsSheet */,
-				22E168CD27B5AD4100757D61 /* RootView */,
 				22E168C627B5A1EA00757D61 /* BottomSheetView */,
 				222E01E527B5890900D00529 /* SearchTitleBar */,
 				2202847B27B5783600BC7AF2 /* HomeTabView */,
@@ -274,6 +277,22 @@
 		22E168E227B6D7E600757D61 /* SideMenuStore */ = {
 			isa = PBXGroup;
 			children = (
+			);
+			path = SideMenuStore;
+			sourceTree = "<group>";
+		};
+		22E168E527B6DD1700757D61 /* SideMenuView */ = {
+			isa = PBXGroup;
+			children = (
+				22E168E827B6DD3B00757D61 /* SideMenuStore */,
+				22E168E627B6DD2B00757D61 /* SideMenuView.swift */,
+			);
+			path = SideMenuView;
+			sourceTree = "<group>";
+		};
+		22E168E827B6DD3B00757D61 /* SideMenuStore */ = {
+			isa = PBXGroup;
+			children = (
 				22E168E327B6D7FA00757D61 /* SideMenuStore.swift */,
 			);
 			path = SideMenuStore;
@@ -356,6 +375,7 @@
 				22E168DA27B6C1F400757D61 /* String+RedditAPI.swift in Sources */,
 				2259B46127B43F1D004714BE /* Listing.swift in Sources */,
 				2259B47927B46B51004714BE /* PostCellActionsView.swift in Sources */,
+				22E168E727B6DD2B00757D61 /* SideMenuView.swift in Sources */,
 				2259B46327B43FDA004714BE /* SubredditStore.swift in Sources */,
 				2202847D27B5785800BC7AF2 /* HomeTabView.swift in Sources */,
 				2230836727B41BB700D37C45 /* SwiftUIRedditApp.swift in Sources */,

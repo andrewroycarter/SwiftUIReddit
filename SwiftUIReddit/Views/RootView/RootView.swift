@@ -21,18 +21,18 @@ struct RootView: View {
         
         ZStack {
             GeometryReader { geometry in
-                Rectangle().fill(.red)
+                SideMenuView()
+                    .frame(width: geometry.size.width * 0.75, height: geometry.size.height)
                 TabBarView()
                     .shadow(radius: 8.0)
                     .frame(width: geometry.size.width, height: geometry.size.height)
-                    .offset(x: sideMenuStore.isShowingMenu ? geometry.size.width / 2.0 : 0.0)
+                    .offset(x: sideMenuStore.isShowingMenu ? geometry.size.width * 0.75 : 0.0)
                     .disabled(sideMenuStore.isShowingMenu)
                     .gesture(sideMenuStore.isShowingMenu ? dismissSideMenuTapGesture : nil)
                 BottomSheetView(isPresented: $bottomSheetStore.isBottomSheetPresented,
                                 content: bottomSheetStore.bottomSheetContentView)
             }
         }
-        .edgesIgnoringSafeArea(.all)
         .environmentObject(bottomSheetStore)
         .environmentObject(sideMenuStore)
     }
