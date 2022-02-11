@@ -19,6 +19,7 @@ struct Post: Codable {
     let urlOverriddenByDest: String?
     let postHint: PostHint?
     let thumbnail: String?
+    let preview: Preview?
     let srDetail: SubredditDetail?
     
     var thumbnailURL: URL? {
@@ -40,6 +41,7 @@ struct Post: Codable {
              urlOverriddenByDest: "http://www.test.com",
              postHint: .image,
              thumbnail: "https://b.thumbs.redditmedia.com/zgQOWbv7dgUS8SmGUjozhWr_ZJXbeycX1EjspB_x1GE.jpg",
+             preview: nil,
              srDetail: SubredditDetail.testSubredditDetail),
         Post(id: UUID().uuidString,
              title: "Second test post",
@@ -51,6 +53,7 @@ struct Post: Codable {
              urlOverriddenByDest: "http://www.test.com",
              postHint: .link,
              thumbnail: "https://b.thumbs.redditmedia.com/zgQOWbv7dgUS8SmGUjozhWr_ZJXbeycX1EjspB_x1GE.jpg",
+             preview: nil,
              srDetail: SubredditDetail.testSubredditDetail)
     ]
     
@@ -64,5 +67,6 @@ struct Post: Codable {
                                 urlOverriddenByDest: "http://www.test.com",
                                 postHint: .link,
                                 thumbnail: "https://b.thumbs.redditmedia.com/zgQOWbv7dgUS8SmGUjozhWr_ZJXbeycX1EjspB_x1GE.jpg",
+                                preview: nil,
                                 srDetail: SubredditDetail.testSubredditDetail)
 }

@@ -7,11 +7,10 @@
 
 import SwiftUI
 
-struct PostCellDefaultBody: View {
+struct PostCellLinkBody: View {
     
     let title: String
     let articleThumbnailURL: URL?
-    let shouldShowArticleThumbnail: Bool
     let articleThumbnailHost: String?
     
     var body: some View {
@@ -22,10 +21,10 @@ struct PostCellDefaultBody: View {
                 .multilineTextAlignment(.leading)
             Spacer(minLength: 0.0)
             
-            if shouldShowArticleThumbnail {
+            if let url = articleThumbnailURL {
                 Spacer(minLength: 8.0)
                 ZStack(alignment: .bottom) {
-                    AsyncImage(url: articleThumbnailURL) { image in
+                    AsyncImage(url: url) { image in
                         image
                             .resizable()
                             .aspectRatio(contentMode: .fill)
@@ -51,11 +50,10 @@ struct PostCellDefaultBody: View {
     }
 }
 
-struct PostCellDefaultBody_Previews: PreviewProvider {
+struct PostCellLinkBody_Previews: PreviewProvider {
     static var previews: some View {
-        PostCellDefaultBody(title: Post.testPost.title,
+        PostCellLinkBody(title: Post.testPost.title,
                             articleThumbnailURL: Post.testPost.thumbnailURL,
-                            shouldShowArticleThumbnail: true,
                             articleThumbnailHost: Post.testPost.hostOfUrlOverriddenByDest)
             .previewLayout(.sizeThatFits)
     }

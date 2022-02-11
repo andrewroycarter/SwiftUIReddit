@@ -12,7 +12,7 @@ struct SubredditDetail: Codable {
     let communityIcon: String?
     
     var cleanedCommunityIcon: String? {
-        return communityIcon?.replacingOccurrences(of: ";amp;amp;", with: "").replacingOccurrences(of: "amp;", with: "")
+        return communityIcon?.cleaningRedditAPIFormatting()
     }
     
     var cleanedCommunityIconURL: URL? {

@@ -18,10 +18,17 @@ struct PostCell: View {
                                         iconURL: viewModel.subredditIconURL,
                                         shouldShowIcon: viewModel.shouldShowSubredditIcon)
             Spacer()
-            PostCellDefaultBody(title: viewModel.title,
-                                articleThumbnailURL: viewModel.articleThumbnailURL,
-                                shouldShowArticleThumbnail: viewModel.shouldShowArticleThumbnail,
-                                articleThumbnailHost: viewModel.articleThumbnailHost)
+            switch viewModel.body {
+            case .article(let thumbnail, let host):
+                PostCellLinkBody(title: viewModel.title,
+                                 articleThumbnailURL: thumbnail,
+                                 articleThumbnailHost: host)
+            case .image(let url):
+                PostCellImageBody(title: viewModel.title,
+                                  url: url)
+            case .plain:
+                PostCellPlainBody(title: viewModel.title)
+            }
             Spacer()
             PostCellActionsView(score: viewModel.score,
                                 comments: viewModel.comments)
