@@ -17,23 +17,27 @@ struct PostCell: View {
                                         subreddit: viewModel.subredditName,
                                         iconURL: viewModel.subredditIconURL,
                                         shouldShowIcon: viewModel.shouldShowSubredditIcon)
+                .padding(.init(top: 0.0, leading: 16.0, bottom: 0.0, trailing: 16.0))
             Spacer()
             switch viewModel.body {
             case .article(let thumbnail, let host):
                 PostCellLinkBody(title: viewModel.title,
                                  articleThumbnailURL: thumbnail,
                                  articleThumbnailHost: host)
+                    .padding(.init(top: 0.0, leading: 16.0, bottom: 0.0, trailing: 16.0))
             case .image(let url):
                 PostCellImageBody(title: viewModel.title,
                                   url: url)
+                    .padding(.zero)
             case .plain:
                 PostCellPlainBody(title: viewModel.title)
+                    .padding(.init(top: 0.0, leading: 16.0, bottom: 0.0, trailing: 16.0))
             }
             Spacer()
             PostCellActionsView(score: viewModel.score,
                                 comments: viewModel.comments)
+                .padding(.init(top: 0.0, leading: 16.0, bottom: 0.0, trailing: 16.0))
         }
-        .padding(.horizontal)
         .fixedSize(horizontal: false, vertical: true)
     }
 }

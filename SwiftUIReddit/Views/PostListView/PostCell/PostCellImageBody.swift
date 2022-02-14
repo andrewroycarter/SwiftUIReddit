@@ -15,12 +15,13 @@ struct PostCellImageBody: View {
     var body: some View {
         VStack() {
             HStack {
-            Text(title)
-                .font(.body)
-                .lineLimit(5)
-                .multilineTextAlignment(.leading)
+                Text(title)
+                    .font(.body)
+                    .lineLimit(5)
+                    .multilineTextAlignment(.leading)
                 Spacer(minLength: 0.0)
             }
+            .padding(.init(top: 0.0, leading: 16.0, bottom: 0.0, trailing: 16.0))
             Spacer()
             AsyncImage(url: url) { image in
                 image

@@ -45,6 +45,7 @@ struct PostListView: View {
                         }
                     } else {
                         ForEach(subredditStore.postCellViewModels, content: PostCell.init(viewModel:))
+                            .listRowInsets(.init(top: 8.0, leading: 0.0, bottom: 8.0, trailing: 0.0))
                     }
                 }
             }
