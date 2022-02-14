@@ -15,6 +15,10 @@ struct User: Codable {
     let name: String
     let iconImg: String?
     
+    var snoovatarImgURL: URL? {
+        return snoovatarImg.flatMap(URL.init(string:))
+    }
+    
     static let testUser = User(snoovatarImg: "https://i.redd.it/snoovatar/avatars/4b198000-fa2f-4ba3-b0bb-f8c87b5573b8.png",
                                totalKarma: 74339,
                                createdUtc: 1595042133,

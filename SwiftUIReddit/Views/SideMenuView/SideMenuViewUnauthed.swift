@@ -9,21 +9,8 @@ import SwiftUI
 
 struct SideMenuViewUnauthed: View {
     
-    @EnvironmentObject var sideMenuStore: SideMenuStore
-
     var body: some View {
         VStack {
-            HStack {
-                Button {
-                    withAnimation {
-                        sideMenuStore.isShowingMenu = false
-                    }
-                } label: {
-                    Image(systemName: "xmark")
-                        .foregroundColor(.primary)
-                }
-                Spacer()
-            }
             SideMenuHeaderView()
             Divider()
             Spacer()
@@ -32,7 +19,7 @@ struct SideMenuViewUnauthed: View {
             Spacer()
             Divider()
             SideMenuFooterView()
-        }.padding()
+        }
     }
     
 }
