@@ -26,6 +26,7 @@ class RedditAuthenticationStore: NSObject, ObservableObject, ASWebAuthentication
     let api = RedditAPI.shared
     private let clientId = "1K7mNP-6aCN4oTZFkwl6Cg"
     @Published var state = State.signedOut
+    @Published var signedInUser: User?
     
     // MARK: - Instance Methods
     
@@ -57,6 +58,7 @@ class RedditAuthenticationStore: NSObject, ObservableObject, ASWebAuthentication
         let endpoint = AccessToken(code: code, clientId: clientId)
         let container = try await api.request(endpoint)
         state = .signedIn(token: container.accessToken)
+        refreshUser()
     }
     
     func getTokenRetrievalCode(from url: URL) async throws -> String {
@@ -77,6 +79,19 @@ class RedditAuthenticationStore: NSObject, ObservableObject, ASWebAuthentication
             
             session.presentationContextProvider = self
             session.start()
+        }
+    }
+    
+    @MainActor
+    func refreshUser() {
+        guard case .signedIn = state else {
+            return
+        }
+        
+        Task {
+            let endpoint = Me()
+            let user = try await api.request(endpoint)
+            self.signedInUser = user
         }
     }
     

@@ -9,30 +9,16 @@ import SwiftUI
 
 struct SideMenuView: View {
     
-    @EnvironmentObject var sideMenuStore: SideMenuStore
+    @EnvironmentObject var authStore: RedditAuthenticationStore
     
     var body: some View {
-        VStack {
-            HStack {
-                Button {
-                    withAnimation {
-                        sideMenuStore.isShowingMenu = false
-                    }
-                } label: {
-                    Image(systemName: "xmark")
-                        .foregroundColor(.primary)
-                }
-                Spacer()
-            }
-            SideMenuHeaderView()
-            Divider()
-            Spacer()
-                .frame(height: 8.0)
-            SideMenuAuthView()
-            Spacer()
-            Divider()
-            SideMenuFooterView()
-        }.padding()
+        switch authStore.state {
+        case .signedOut:
+            SideMenuViewUnauthed()
+            
+        case .signedIn:
+            SideMenuViewAuthed(user: $authStore.signedInUser)
+        }
     }
 }
 

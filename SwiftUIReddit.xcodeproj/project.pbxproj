@@ -46,6 +46,10 @@
 		22E168F527B7219E00757D61 /* SideMenuHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22E168F427B7219E00757D61 /* SideMenuHeaderView.swift */; };
 		22E168F727B721FC00757D61 /* SideMenuFooterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22E168F627B721FC00757D61 /* SideMenuFooterView.swift */; };
 		22E168F927B7223100757D61 /* SideMenuAuthView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22E168F827B7223100757D61 /* SideMenuAuthView.swift */; };
+		22E9EF8F27BAC7780055D529 /* SideMenuViewUnauthed.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22E9EF8E27BAC7780055D529 /* SideMenuViewUnauthed.swift */; };
+		22E9EF9127BAC7B80055D529 /* SideMenuViewAuthed.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22E9EF9027BAC7B80055D529 /* SideMenuViewAuthed.swift */; };
+		22E9EF9327BAC8950055D529 /* Me.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22E9EF9227BAC8950055D529 /* Me.swift */; };
+		22E9EF9527BAC8B20055D529 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22E9EF9427BAC8B20055D529 /* User.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -90,6 +94,10 @@
 		22E168F427B7219E00757D61 /* SideMenuHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SideMenuHeaderView.swift; sourceTree = "<group>"; };
 		22E168F627B721FC00757D61 /* SideMenuFooterView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SideMenuFooterView.swift; sourceTree = "<group>"; };
 		22E168F827B7223100757D61 /* SideMenuAuthView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SideMenuAuthView.swift; sourceTree = "<group>"; };
+		22E9EF8E27BAC7780055D529 /* SideMenuViewUnauthed.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SideMenuViewUnauthed.swift; sourceTree = "<group>"; };
+		22E9EF9027BAC7B80055D529 /* SideMenuViewAuthed.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SideMenuViewAuthed.swift; sourceTree = "<group>"; };
+		22E9EF9227BAC8950055D529 /* Me.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Me.swift; sourceTree = "<group>"; };
+		22E9EF9427BAC8B20055D529 /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -204,6 +212,7 @@
 				2259B46627B455CD004714BE /* PostHint.swift */,
 				22E168D527B6BEC900757D61 /* Preview.swift */,
 				22E168EC27B7096F00757D61 /* AccessTokenContainer.swift */,
+				22E9EF9427BAC8B20055D529 /* User.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -213,6 +222,7 @@
 			children = (
 				2259B45E27B43ED4004714BE /* Subreddit.swift */,
 				22E168EE27B709E300757D61 /* AccessToken.swift */,
+				22E9EF9227BAC8950055D529 /* Me.swift */,
 			);
 			path = Endpoints;
 			sourceTree = "<group>";
@@ -295,6 +305,8 @@
 			children = (
 				22E168E827B6DD3B00757D61 /* SideMenuStore */,
 				22E168E627B6DD2B00757D61 /* SideMenuView.swift */,
+				22E9EF8E27BAC7780055D529 /* SideMenuViewUnauthed.swift */,
+				22E9EF9027BAC7B80055D529 /* SideMenuViewAuthed.swift */,
 				22E168F427B7219E00757D61 /* SideMenuHeaderView.swift */,
 				22E168F627B721FC00757D61 /* SideMenuFooterView.swift */,
 				22E168F827B7223100757D61 /* SideMenuAuthView.swift */,
@@ -386,16 +398,20 @@
 				22E168F727B721FC00757D61 /* SideMenuFooterView.swift in Sources */,
 				2259B47C27B4BEB3004714BE /* TabBarView.swift in Sources */,
 				2259B45F27B43ED4004714BE /* Subreddit.swift in Sources */,
+				22E9EF9127BAC7B80055D529 /* SideMenuViewAuthed.swift in Sources */,
 				22E168DA27B6C1F400757D61 /* String+RedditAPI.swift in Sources */,
 				2259B46127B43F1D004714BE /* Listing.swift in Sources */,
 				2259B47927B46B51004714BE /* PostCellActionsView.swift in Sources */,
 				22E168E727B6DD2B00757D61 /* SideMenuView.swift in Sources */,
 				2259B46327B43FDA004714BE /* SubredditStore.swift in Sources */,
 				2202847D27B5785800BC7AF2 /* HomeTabView.swift in Sources */,
+				22E9EF9327BAC8950055D529 /* Me.swift in Sources */,
 				22E168EF27B709E300757D61 /* AccessToken.swift in Sources */,
 				2230836727B41BB700D37C45 /* SwiftUIRedditApp.swift in Sources */,
 				2259B45327B421B4004714BE /* PostListView.swift in Sources */,
 				22E168E427B6D7FA00757D61 /* SideMenuStore.swift in Sources */,
+				22E9EF9527BAC8B20055D529 /* User.swift in Sources */,
+				22E9EF8F27BAC7780055D529 /* SideMenuViewUnauthed.swift in Sources */,
 				22E168F527B7219E00757D61 /* SideMenuHeaderView.swift in Sources */,
 				2259B45527B424F5004714BE /* RedditAPI.swift in Sources */,
 				2259B47527B46957004714BE /* PostCellSubredditAuthorView.swift in Sources */,
